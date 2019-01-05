@@ -20,12 +20,7 @@
 
 	<dependencies>
 
-        <!-- Derby Database Ovo je za izbrisati!!!-->
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
 
 
 		<dependency>
