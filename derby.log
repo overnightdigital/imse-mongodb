@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Jan 05 16:40:37 CET 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0168-1eac-5518-0000065fbda8 
+on database directory memory:C:\Users\amilinko\Desktop\Office\IMSE\imse\testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/amilinko/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_171-b11
+user.dir=C:\Users\amilinko\Desktop\Office\IMSE\imse
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
