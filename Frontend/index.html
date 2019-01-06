@@ -28,8 +28,8 @@
     </form>
 
     <ul>
-        <li v-for="item in items">
-            {{ item.message }}
+        <li v-for="firma in firmen">
+            {{ firma.ID + firma.name + firma.adresse }}
         </li>
     </ul>
     <p> {{ ID }} </p>
@@ -42,12 +42,15 @@
         el: '#app',
         data () {
             return {
-                ID: 9999,
-                name: "",
-                adresse: "",
-                items: [
-                    { message: 'Foo' },
-                    { message: 'Bar' }
+                firmen: [
+                    { ID: 9999,
+                      name: "defaultName",
+                      adresse: "defaultAddress"
+                    },
+                    { ID: 6666,
+                        name: "defaultName2",
+                        adresse: "defaultAddress2"
+                    }
                 ]
             }
         },
@@ -79,11 +82,10 @@
             }, err => {console.log(err);});
             },
 
-            deleteObject() {
+            getAllFirmen() {
                 console.log("entered");
 
                 this.$http.get('http://localhost:8080/api/firma').then(response => {
-                    console.log("this is the code");
                 this.ID = 888;
                     console.log("message: " + this.items[0].message);
                     this.getSvg();
