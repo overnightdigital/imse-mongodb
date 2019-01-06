@@ -1,11 +1,16 @@
 package com.imse.imse.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Mitarbeiter")
 public class Mitarbeiter {
+
+        @Id
+        private int sv_nummer;
 
 		private String name;
 
@@ -13,7 +18,8 @@ public class Mitarbeiter {
 
 		private String e_mail;
 
-		private int sv_nummer;
+        @ManyToOne
+        private Firma firma;
 		
 		public Mitarbeiter() {}
 
@@ -51,6 +57,11 @@ public class Mitarbeiter {
 		public void setSv_nummer(int sv_nummer) {
 			this.sv_nummer = sv_nummer;
 		}
-		
-		
+
+        public Firma getFirma() {
+            return firma;
+        }
+        public void setFirma(Firma firma) {
+            this.firma = firma;
+        }
 }

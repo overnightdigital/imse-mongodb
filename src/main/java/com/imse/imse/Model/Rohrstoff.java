@@ -1,11 +1,16 @@
 package com.imse.imse.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Rohrstoff")
+@Table(name = "Rohstoff") // typo in database !!!!!!!!
 public class Rohrstoff {
+
+    @Id
+    private int ID;
 
 	private float menge;
 
@@ -13,12 +18,13 @@ public class Rohrstoff {
 
 	private float preis;
 
-	private int ID_Nummer;
+    @ManyToOne
+    private Firma firma;
 	
 	public Rohrstoff() {}
 
-	public Rohrstoff(float m, float p, int id, String name) {
-		this.ID_Nummer = id;
+	public Rohrstoff(float m, float p, int ID, String name) {
+		this.ID = ID;
 		this.name = name;
 		this.menge = m;
 		this.preis = p;
@@ -46,11 +52,16 @@ public class Rohrstoff {
 	}
 
 	public int getID_Nummer() {
-		return ID_Nummer;
+		return ID;
 	}
 	public void setID_Nummer(int iD_Nummer) {
-		ID_Nummer = iD_Nummer;
+		ID = iD_Nummer;
 	}
-	
-	
+
+    public Firma getFirma() {
+        return firma;
+    }
+    public void setFirma(Firma firma) {
+        this.firma = firma;
+    }
 }

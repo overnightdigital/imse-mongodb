@@ -1,17 +1,23 @@
 package com.imse.imse.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Produkt")
 public class Produkt {
-	
+
+    @Id
+    private int ID_Nummer;
+
 	private String name;
 
 	private String preis;
 
-	private int ID_Nummer;
+    @ManyToOne
+    private Firma firma;
 	
 	public Produkt(){}
 
@@ -41,6 +47,11 @@ public class Produkt {
 	public void setID_Nummer(int iD_Nummer) {
 		ID_Nummer = iD_Nummer;
 	}
-	
-	
+
+    public Firma getFirma() {
+        return firma;
+    }
+    public void setFirma(Firma firma) {
+        this.firma = firma;
+    }
 }

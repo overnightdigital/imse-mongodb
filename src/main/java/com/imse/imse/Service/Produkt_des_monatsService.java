@@ -16,8 +16,8 @@ public class Produkt_des_monatsService {
     public Produkt_des_monatsService() {
     }
 
-    public void createProdukt_des_monats(String s, String b) {
-        Produkt_des_monats pm = new Produkt_des_monats(s, b);
+    public void createProdukt_des_monats(int Produkt_ID, String s, String b) {
+        Produkt_des_monats pm = new Produkt_des_monats(Produkt_ID, s, b);
         produkt_des_monatsRepository.save(pm);
     }
 

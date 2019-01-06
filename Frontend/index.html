@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Firma Use Case</title>
+</head>
+<body>
+<h1>Firmen</h1>
+<ul id="firmen"></ul>
+
+<script>
+
+    function createNode(element) {
+        return document.createElement(element);
+    }
+
+    function append(parent, el) {
+        return parent.appendChild(el);
+    }
+
+    const ul = document.getElementById('firmen');
+    const url = 'http://localhost:8080/api/firma';
+    fetch(url)
+        .then((resp) => resp.json())
+    .then(function(data) {
+        let firmen = data.results;
+        console.log("reached");
+        return firmen.map(function(firma) {
+            let li0 = createNode('li'),
+                li2 = createNode('li'),
+                li3 = createNode('li');
+            span.innerHTML = `${firma.name} ${firma.adresse}`;
+            append(li0, li);
+            append(li, span);
+            append(ul, li);
+        })
+    })
+        .catch(function(error) {
+            console.log("Error " + JSON.stringify(error));
+        });
+
+
+</script>
+
+</body>
+</html>
