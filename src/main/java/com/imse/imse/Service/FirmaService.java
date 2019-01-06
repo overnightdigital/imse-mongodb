@@ -30,8 +30,9 @@ public class FirmaService {
         return firmaRepository.findById(id);
     }
 
-    public void updateFirma() {
-
+    public void updateFirma(int id, String name, String adresse) {
+        // ToBe Checked
+        // firmaRepository.findById(id).get().setName(name);
     }
 
     public void deleteFirma(int id) {
