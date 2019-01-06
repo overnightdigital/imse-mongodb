@@ -17,6 +17,7 @@ public class FirmaController {
     @PostMapping(value = "/firma", params = { "id","name","adresse" })
     public void createFirma(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("adresse") String adresse){
         System.out.println("id: " + id + " name: " + name + " adresse: " + adresse);
+        firmaService.createFirma(id, name, adresse);
     }
 
     @GetMapping(value = "/firma")
