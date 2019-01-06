@@ -7,11 +7,11 @@ import javax.persistence.*;
 public class Firma {
 
     @Id
-	int ID;
+	private int ID;
 
-	String name;
+	private String name;
 
-	String adresse;
+	private String adresse;
 	
 	public Firma(){}
 

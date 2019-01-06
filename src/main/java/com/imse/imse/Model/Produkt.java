@@ -1,29 +1,40 @@
 package com.imse.imse.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Produkt")
 public class Produkt {
 	
-	String name;
-	String preis;
-	int ID_Nummer;
+	private String name;
+
+	private String preis;
+
+	private int ID_Nummer;
 	
-	Produkt(){}
-	Produkt(int id, String name, String preis){
+	public Produkt(){}
+
+	public Produkt(int id, String name, String preis){
 		this.ID_Nummer = id;
 		this.preis = preis;
 		this.name = name;
 	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getPreis() {
 		return preis;
 	}
 	public void setPreis(String preis) {
 		this.preis = preis;
 	}
+
 	public int getID_Nummer() {
 		return ID_Nummer;
 	}
