@@ -1,46 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Firma Use Case</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Imse Use Case</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <style>
+        input {
+            width: 50px;
+        }
+    </style>
 </head>
 <body>
-<h1>Firmen</h1>
-<ul id="firmen"></ul>
+
+
+
+
+
+<div id="app">
+
+    <form style="float:right;" action="javasctipt:;" @submit="deleteObject">
+        <p> Delete object </p>
+        ID:<input id="idToDelete" v-model="idToDelete" type="text"/>
+        <button type="submit">Delete</button>
+    </form>
+
+    <ul>
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+    </ul>
+    <p> {{ ID }} </p>
+
+    <div id="svgFiled" style="width: 550px; height: 900px; margin: 0;" v-html="svg"> </div>
+</div>
 
 <script>
+    var app = new Vue({
+        el: '#app',
+        data () {
+            return {
+                ID: 9999,
+                name: "",
+                adresse: "",
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ]
+            }
+        },
+        mounted() {
+            this.getSvg();
+            var svg = document.getElementById('svgFiled');
 
-    function createNode(element) {
-        return document.createElement(element);
-    }
-
-    function append(parent, el) {
-        return parent.appendChild(el);
-    }
-
-    const ul = document.getElementById('firmen');
-    const url = 'http://localhost:8080/api/firma';
-    fetch(url)
-        .then((resp) => resp.json())
-    .then(function(data) {
-        let firmen = data.results;
-        console.log("reached");
-        return firmen.map(function(firma) {
-            let li0 = createNode('li'),
-                li2 = createNode('li'),
-                li3 = createNode('li');
-            span.innerHTML = `${firma.name} ${firma.adresse}`;
-            append(li0, li);
-            append(li, span);
-            append(ul, li);
-        })
-    })
-        .catch(function(error) {
-            console.log("Error " + JSON.stringify(error));
+            svg.addEventListener('click', event => {
+                let bound = svg.getBoundingClientRect();
+            this.x = parseInt(event.clientX - bound.left - svg.clientLeft);
+            this.y = parseInt(event.clientY - bound.top - svg.clientTop);
+            console.log(this.x, this.y);
+            this.create();
         });
 
+        },
+        computed: {
+            defaultParameters () {
+                return { ID: this.ID, name: this.name, adresse: this.adresse };
+            }
+        },
+        methods: {
+            getSvg(){
+                this.$http.get('http://localhost:8080/api/firma').then(response => {
+                    console.log(response);
 
+               // this.svg = response.bodyText;
+
+            }, err => {console.log(err);});
+            },
+
+            deleteObject() {
+                console.log("entered");
+
+                this.$http.get('http://localhost:8080/api/firma').then(response => {
+                    console.log("this is the code");
+                this.ID = 888;
+                    console.log("message: " + this.items[0].message);
+                    this.getSvg();
+            }, err => {console.log(err);});
+            }
+        }
+    })
 </script>
 
 </body>
