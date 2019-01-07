@@ -23,7 +23,7 @@ public class FirmaController {
         firmaService.createFirma(id, name, adresse);
     }
 
-    @RequestMapping(value = "/firma", method = GET)
+    @RequestMapping(value = "/firma", method = GET, produces = "application/json")
     public ArrayList<Firma> getAllFirma(){
         ArrayList<Firma> toReturn = new ArrayList<>();
         Iterable<Firma> firmen;
@@ -34,7 +34,7 @@ public class FirmaController {
         return toReturn;
     }
 
-    @RequestMapping(value = "/firma/{id}", method = GET)
+    @RequestMapping(value = "/firma/{id}", method = GET, produces = "application/json")
     public Firma getByIdFirma(@PathVariable int id){
         return firmaService.getByIdFirma(id).get();
     }
@@ -49,7 +49,7 @@ public class FirmaController {
         firmaService.deleteFirma(id);
     }
 
-    @RequestMapping(value = "/firma/search/{name}", method = GET)
+    @RequestMapping(value = "/firma/search/{name}", method = GET, produces = "application/json")
     public ArrayList<Firma> searchFirma(@PathVariable String name) {
         ArrayList<Firma> toReturn = new ArrayList<>();
         Iterable<Firma> firmen;
