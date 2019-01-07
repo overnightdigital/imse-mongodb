@@ -8,8 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -18,122 +19,100 @@
 
 
 <div id="app">
-
-    <form style="float:right;" action="javasctipt:;" @submit="getAllProdukt_des_monats">
-        <p> Show All Data </p>
-        <button type="submit">Show Data</button>
-    </form>
-
-    <ul>
-        <li v-for="p in produkte_des_monats">
-            {{ p.produkt_ID + " " + p.bewertung + " " + p.spezifikation }}
-        </li>
-    </ul>
-
     <div class="container ">
-
-
         <div class="row">
-
-            <h2>Customers</h2>
-
-
-            <div class="pull-right">
-
-                <div class="btn btn-default btn-info btn-md"><i class="glyphicon glyphicon-refresh"></i>  Refresh</div>
-
-                <div class="btn btn-default btn-success btn-md" data-toggle="modal" data-target="#panel-customer" ><i class="glyphicon glyphicon-plus"></i>  New</div>
-
+            <div  style="margin-top:10px">
+                        <form class="form-inline" action="javasctipt:;" @submit="getAllProdukt_des_monats">
+                            <button class="btn btn-primary" type="submit">Refresh</button>
+                        </form>
             </div>
+            <br>
+            <form class="form-inline mt-2" style="float:right;" action="javasctipt:;" @submit="createProdukt_des_monats">
+                <div class="form-group pull-left" style="margin-top:10px">
+                    ProduktID:<input class="form-control" id="produkt_IDToCreate" v-model="produkt_IDToCreate" type="text"/>
+                    Bewertung:<input class="form-control" id="bewertungToCreate" v-model="bewertungToCreate" type="text"/>
+                    Spezifikation:<input class="form-control" id="spezifikationToCreate" v-model="spezifikationToCreate" type="text"/>
+                    <button class="btn btn-success" type="submit">Create</button>
+                </div>
+            </form>
+            <form class="form-inline mt-2" style="float:right;" action="javasctipt:;" @submit="createProdukt_des_monats">
+                <div class="form-group pull-left" style="margin-top:10px">
+                    ProduktID:<input class="form-control" v-model="produkt_IDToCreate" type="text"/>
+                    Bewertung:<input class="form-control" v-model="bewertungToCreate" type="text"/>
+                    Spezifikation:<input class="form-control" v-model="spezifikationToCreate" type="text"/>
+                    <button class="btn btn-success" type="submit">Update</button>
+                </div>
+            </form>
+            <form class="form-inline mt-2" style="float:right;" action="javasctipt:;" @submit="searchProdukt_des_monats">
+                <div class="form-group pull-left" style="margin-top:10px">
+                    Bewertung:<input class="form-control" v-model="bewertungToSearch" type="number"/>
+                    <button class="btn btn-success" type="submit">Search</button>
+                </div>
+            </form>
         </div>
+
 
 
         <div class="row" >
 
-            <table class="table table-bordered table-striped" >
+            <table class="table table-bordered table-striped" style="margin-top:5px">
                 <thead >
                 <tr class="bg-info ">
                     <th></th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Description</th>
+                    <th>ProduktID</th>
+                    <th>Bewertung</th>
+                    <th>Spezifikation</th>
                 </tr>
                 </thead>
 
                 <tbody id="list-itens">
-
-                <li v-for="p in produkte_des_monats">
                 <tr v-for="p in produkte_des_monats" index="$index">
                     <td style="width:140px; text-align: center">
-                        <div class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-eye-open text-primary"></i></div>
-                        <div class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></div>
-                        <div class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></div>
+                        <form class="form-inline mt-2" style="float:right;" action="javasctipt:;" @submit="deleteProdukt_des_monats(p.produkt_ID)">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </td>
                     <td>{{p.produkt_ID}}</td>
                     <td>{{p.bewertung}}</td>
                     <td>{{p.spezifikation}}</td>
                 </tr>
-
-
                 </tbody>
-
             </table>
-
-
-
         </div>
 
-
-
-        <div class="row">
-
-            <h3>Customer #<span id="txt-customer-id"></span></h3>
-
-            <div class="col-sm-12 col-md-12 col-lg-12">
-
+        <form class="form-inline mt-2" style="float:right;" action="javasctipt:;" @submit="showProdukt">
+            <div class="form-group pull-left" style="margin-top:10px">
+                ProduktID:<input class="form-control" v-model="produktToSearch" type="number"/>
+                <button class="btn btn-success" type="submit">Find Me a Product</button>
             </div>
+        </form>
 
+        <div class="row" >
 
+            <table class="table table-bordered table-striped" style="margin-top:5px">
+                <thead >
+                <tr class="bg-info ">
+                    <th></th>
+                    <th>ProduktID</th>
+                    <th>Name</th>
+                    <th>Preis</th>
+                    <th>Firma</th>
+                </tr>
+                </thead>
+
+                <tbody id="list-items">
+                <tr>
+                    <td></td>
+                    <td>{{this.id_Nummer}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.preis}}</td>
+                    <td>{{this.firma.name}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
-
-
-
-
-        <div id="panel-customer" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4 class="modal-title" id="hdr-form-customer">New customer</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <form class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" id="frm-customer-name" class="form-control">
-
-                            <label>Email Address</label>
-                            <input type="email" name="email" id="frm-customer-email"  class="form-control">
-
-                            <label>Description</label>
-                            <textarea class="form-control" name="description" id="frm-customer-description"></textarea>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link pull-left" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Save</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
 
     </div>
-
 </div>
 
 <script>
@@ -141,19 +120,27 @@
         el: '#app',
         data () {
             return {
-                produkte: [],
+                produktToSearch: 0,
+                bewertungToSearch: 5,
+                produkt_IDToCreate: 0,
+                bewertungToCreate: "",
+                spezifikationToCreate: "",
+                        firma : 0,
+                        id_Nummer : 0,
+                        name : "example",
+                        preis : "",
                 produkte_des_monats: [
                     {
-                        "produkt_ID" : 123,
-                        "bewertung" : 7,
-                        "spezifikation" : "Sehr Gut"
-
+                        "produkt_ID" : 0011,
+                        "bewertung" : 5,
+                        "spezifikation" : "Test Please Refresh Me"
                     }
                 ]
             }
         },
-
-
+        mounted() {
+          this.getAllProdukt_des_monats();
+        },
         methods: {
             getAllProdukt_des_monats() {
                 this.$http.get('http://localhost:8080/api/produkt_des_monats')
@@ -162,6 +149,51 @@
                     }, err => {
                         console.log(err);
                     });
+            },
+            createProdukt_des_monats() {
+                this.$http.post('http://localhost:8080/api/produkt_des_monats?produkt_id=' + this.produkt_IDToCreate + "&s=" + this.spezifikationToCreate + "&b=" + this.bewertungToCreate)
+                    .then(response => {
+                    this.getAllProdukt_des_monats();
+               }, err => {
+                    console.log("ERR: " + err);
+                });
+            },
+            updateProdukt_des_monats() {
+                this.$http.put('http://localhost:8080/api/produkt_des_monats?produkt_id=' + this.produkt_IDToCreate + "&s=" + this.spezifikationToCreate + "&b=" + this.bewertungToCreate)
+                    .then(response => {
+                    this.getAllProdukt_des_monats();
+                }, err => {
+                    console.log("ERR: " + err);
+                });
+            },
+            deleteProdukt_des_monats(id) {
+                this.$http.delete('http://localhost:8080/api/produkt_des_monats/' + id)
+                    .then(response => {
+                        this.getAllProdukt_des_monats();
+                }, err => {
+                    console.log("ERR: " + err);
+                });
+            },
+            searchProdukt_des_monats() {
+                this.$http.get('http://localhost:8080/api/produkt_des_monats/search/' + this.bewertungToSearch)
+                    .then(response => {
+                        console.log(this.bewertungToSearch);
+                    this.produkte_des_monats = response.body;
+            }, err => {
+                    console.log("ERR: " + err);
+                });
+            },
+            showProdukt() {
+                this.$http.get('http://localhost:8080/api/produkt/' + this.produktToSearch)
+                    .then(response => {
+                    this.firma = response.body.firma;
+                    this.id_Nummer = response.body.id_Nummer;
+                    this.name = response.body.name;
+                    this.preis = response.body.preis;
+                    console.log(response);
+            }, err => {
+                    console.log("ERR: " + err);
+                });
             }
         }
     })
