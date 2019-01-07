@@ -1,5 +1,6 @@
 package com.imse.imse.Service;
 
+import com.imse.imse.Model.Firma;
 import com.imse.imse.Model.Mitarbeiter;
 import com.imse.imse.Repository.MitarbeiterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class MitarbeiterService {
     public MitarbeiterService() {
     }
 
-    public void createMitarbeiter(String name, String nummer, String e_mail, int sv) {
-        Mitarbeiter m = new Mitarbeiter(name, nummer, e_mail, sv);
+    public void createMitarbeiter(String name, String nummer, String e_mail, int sv, Firma firma) {
+        Mitarbeiter m = new Mitarbeiter(name, nummer, e_mail, sv, firma);
         mitarbeiterRepository.save(m);
     }
 
@@ -29,8 +30,12 @@ public class MitarbeiterService {
         return mitarbeiterRepository.findById(id);
     }
 
-    public void updateMitarbeiter() {
-
+    public void updateMitarbeiter(String name, String nummer, String e_mail, int sv) {
+        Mitarbeiter m = mitarbeiterRepository.findById(sv).get();
+        m.setName(name);
+        m.setNummer(nummer);
+        m.setE_mail(e_mail);
+        mitarbeiterRepository.save(m);
     }
 
     public void deleteMitarbeiter(int id) {

@@ -1,9 +1,6 @@
 package com.imse.imse.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Mitarbeiter")
@@ -14,8 +11,10 @@ public class Mitarbeiter {
 
 		private String name;
 
+		@Column(name = "Telefonnummer")
 		private String nummer;
 
+		@Column(name = "`E-mail`")
 		private String e_mail;
 
         @ManyToOne
@@ -23,11 +22,12 @@ public class Mitarbeiter {
 		
 		public Mitarbeiter() {}
 
-		public Mitarbeiter(String name, String nummer, String e_mail, int sv) {
+		public Mitarbeiter(String name, String nummer, String e_mail, int sv, Firma firma) {
 			this.e_mail = e_mail;
 			this.nummer = nummer;
 			this.name = name;
 			this.sv_nummer = sv;
+			this.firma = firma;
 		}
 
 		public String getName() {
