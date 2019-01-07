@@ -5,15 +5,13 @@ import com.imse.imse.Model.Produkt_des_monats;
 import com.imse.imse.Service.ProduktService;
 import com.imse.imse.Service.Produkt_des_monatsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class Produkt_des_monatsController {
