@@ -23,11 +23,11 @@ public class Rohrstoff {
 	
 	public Rohrstoff() {}
 
-	public Rohrstoff(float m, float p, int ID, String name) {
+	public Rohrstoff(float m, float p, int ID, String name, Firma firma) {
 		this.ID = ID;
 		this.name = name;
 		this.menge = m;
-		this.preis = p;
+		this.firma = firma;
 	}
 
 	public float getMenge() {

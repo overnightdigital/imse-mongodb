@@ -1,5 +1,6 @@
 package com.imse.imse.Service;
 
+import com.imse.imse.Model.Firma;
 import com.imse.imse.Model.Produkt;
 import com.imse.imse.Repository.ProduktRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class ProduktService {
     public ProduktService() {
     }
 
-    public void createProdukt(int id, String name, String preis) {
-        Produkt p = new Produkt(id, name, preis);
+    public void createProdukt(int id, String name, String preis, Firma firma) {
+        Produkt p = new Produkt(id, name, preis, firma);
         produktRepository.save(p);
     }
 
@@ -29,8 +30,11 @@ public class ProduktService {
         return produktRepository.findById(id);
     }
 
-    public void updateProdukt() {
-
+    public void updateProdukt(int id, String name, String preis) {
+        Produkt p = produktRepository.findById(id).get();
+        p.setName(name);
+        p.setPreis(preis);
+        produktRepository.save(p);
     }
 
     public void deleteProdukt(int id) {

@@ -21,10 +21,11 @@ public class Produkt {
 	
 	public Produkt(){}
 
-	public Produkt(int id, String name, String preis){
+	public Produkt(int id, String name, String preis, Firma firma){
 		this.ID_Nummer = id;
 		this.preis = preis;
 		this.name = name;
+		this.firma = firma;
 	}
 
 	public String getName() {
