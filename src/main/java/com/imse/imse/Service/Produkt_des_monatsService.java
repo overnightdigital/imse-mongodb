@@ -29,8 +29,11 @@ public class Produkt_des_monatsService {
         return produkt_des_monatsRepository.findById(id);
     }
 
-    public void updateProdukt_des_monats() {
-
+    public void updateProdukt_des_monats(int Produkt_ID, String s, String b) {
+        Produkt_des_monats pm = produkt_des_monatsRepository.findById(Produkt_ID).get();
+        pm.setBewertung(b);
+        pm.setSpezifikation(s);
+        produkt_des_monatsRepository.save(pm);
     }
 
     public void deleteProdukt_des_monats(int id) {
