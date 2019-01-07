@@ -12,30 +12,30 @@ public class Produkt_des_monats {
     @Id
     private int Produkt_ID;
 
-	private String spezifikation;
+	private String Spezifikation;
 
-	private String bewertung;
+	private int Bewertung;
 	
 	public Produkt_des_monats() {}
 
-	public Produkt_des_monats(int Produkt_ID, String s, String b) {
+	public Produkt_des_monats(int Produkt_ID, String s, int b) {
 	    this.Produkt_ID = Produkt_ID;
-		this.spezifikation = s;
-		this.bewertung = b;
+		this.Spezifikation = s;
+		this.Bewertung = b;
 	}
 
 	public String getSpezifikation() {
-		return spezifikation;
+		return Spezifikation;
 	}
 	public void setSpezifikation(String spezifikation) {
-		this.spezifikation = spezifikation;
+		this.Spezifikation = spezifikation;
 	}
 
-	public String getBewertung() {
-		return bewertung;
+	public int getBewertung() {
+		return Bewertung;
 	}
-	public void setBewertung(String bewertung) {
-		this.bewertung = bewertung;
+	public void setBewertung(int bewertung) {
+		this.Bewertung = bewertung;
 	}
 
     public int getProdukt_ID() {

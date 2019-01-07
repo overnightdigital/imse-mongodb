@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Produkt {
 
     @Id
-    private int ID_Nummer;
+    private int ID;
 
 	private String name;
 
@@ -22,7 +22,7 @@ public class Produkt {
 	public Produkt(){}
 
 	public Produkt(int id, String name, String preis, Firma firma){
-		this.ID_Nummer = id;
+		this.ID = id;
 		this.preis = preis;
 		this.name = name;
 		this.firma = firma;
@@ -43,10 +43,10 @@ public class Produkt {
 	}
 
 	public int getID_Nummer() {
-		return ID_Nummer;
+		return ID;
 	}
 	public void setID_Nummer(int iD_Nummer) {
-		ID_Nummer = iD_Nummer;
+		ID = iD_Nummer;
 	}
 
     public Firma getFirma() {

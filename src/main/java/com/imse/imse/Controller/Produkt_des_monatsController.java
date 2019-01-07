@@ -23,7 +23,7 @@ public class Produkt_des_monatsController {
     ProduktService produktService;
 
     @RequestMapping(value = "/produkt_des_monats", params = { "produkt_id","s","b" }, method = POST)
-    public void createProdukt_des_monats(@RequestParam("produkt_id") int produkt_id, @RequestParam("s") String s, @RequestParam("b") String b){
+    public void createProdukt_des_monats(@RequestParam("produkt_id") int produkt_id, @RequestParam("s") String s, @RequestParam("b") int b){
         System.out.println(" !!!!  produkt_id: " + produkt_id + " s: " + s + " b: " + b);
         produkt_des_monatsService.createProdukt_des_monats(produkt_id, s, b);
     }
@@ -45,7 +45,7 @@ public class Produkt_des_monatsController {
     }
 
     @RequestMapping(value = "/produkt_des_monats", params = { "produkt_id","s","b" }, method = PUT)
-    public void updateProdukt_des_monats(@RequestParam("produkt_id") int produkt_id, @RequestParam("s") String s, @RequestParam("b") String b){
+    public void updateProdukt_des_monats(@RequestParam("produkt_id") int produkt_id, @RequestParam("s") String s, @RequestParam("b") int b){
         produkt_des_monatsService.updateProdukt_des_monats(produkt_id, s, b);
     }
 
@@ -55,12 +55,12 @@ public class Produkt_des_monatsController {
     }
 
     @RequestMapping(value = "/produkt_des_monats/search/{bewertung}", method = GET)
-    public ArrayList<Produkt_des_monats> searchProdukt_des_monats(@PathVariable String bewertung) {
+    public ArrayList<Produkt_des_monats> searchProdukt_des_monats(@PathVariable int bewertung) {
         ArrayList<Produkt_des_monats> toReturn = new ArrayList<>();
         Iterable<Produkt_des_monats> produkte_des_monats;
         produkte_des_monats = produkt_des_monatsService.getAllProdukt_des_monats();
         for (Produkt_des_monats pm: produkte_des_monats) {
-            if (pm.getBewertung().equals(bewertung)) {
+            if (pm.getBewertung() == bewertung) {
                 toReturn.add(pm);
             }
         }

@@ -91,7 +91,7 @@ public class FillDataService  {
             ArrayList<String> InputValues3 = new ArrayList<>();
             InputValues3.add(50000 + i + "");
             InputValues3.add(s.get(rand.nextInt(s.size()-1)));
-            InputValues3.add(b.get(rand.nextInt(b.size()-1)));
+            InputValues3.add(rand.nextInt(10) + 5 + "");
             fillData("http://localhost:8080/api/produkt_des_monats", InputQueryParams3, InputValues3);
         }
         // Produkt Des Monats
