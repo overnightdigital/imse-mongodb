@@ -1,9 +1,7 @@
 package com.imse.imse.Model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "Firma")
 public class Firma {
 
     @Id

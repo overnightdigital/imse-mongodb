@@ -1,12 +1,7 @@
 package com.imse.imse.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "Produkt_des_monats")
 public class Produkt_des_monats {
 
     @Id

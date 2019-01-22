@@ -1,9 +1,7 @@
 package com.imse.imse.Model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "Mitarbeiter")
 public class Mitarbeiter {
 
         @Id
@@ -11,13 +9,10 @@ public class Mitarbeiter {
 
 		private String name;
 
-		@Column(name = "Telefonnummer")
 		private String nummer;
 
-		@Column(name = "`E-mail`")
 		private String e_mail;
 
-        @ManyToOne
         private Firma firma;
 		
 		public Mitarbeiter() {}

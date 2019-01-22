@@ -1,12 +1,7 @@
 package com.imse.imse.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "Rohstoff") // typo in database !!!!!!!!
 public class Rohrstoff {
 
     @Id
@@ -18,7 +13,6 @@ public class Rohrstoff {
 
 	private float preis;
 
-    @ManyToOne
     private Firma firma;
 	
 	public Rohrstoff() {}
