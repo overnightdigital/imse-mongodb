@@ -1,6 +1,6 @@
 package com.imse.imse.Controller;
 
-import com.imse.imse.Service.FillDataService;
+import com.imse.imse.Service.RefillDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,17 +12,18 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class FillDataController {
+public class RefillDataController {
 
     @Autowired
-    FillDataService fillDataService;
+    RefillDataService refillDataService;
 
-    @RequestMapping(value = "/filldata", method = POST)
+    @RequestMapping(value = "/refilldata", method = POST)
     public void fillData(){
         try {
-            fillDataService.execute();
+        	refillDataService.execute();
+        	System.out.println("Refilling Done");
         } catch (Exception e) {
-            System.out.println("Filling Failed");
+            System.out.println("Refilling Failed");
         }
 
     }
