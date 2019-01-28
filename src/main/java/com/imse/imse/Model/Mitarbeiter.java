@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 public class Mitarbeiter {
 
         @Id
-        private int sv_nummer;
+        private int _id;
 
 		private String name;
 
@@ -21,7 +21,7 @@ public class Mitarbeiter {
 			this.e_mail = e_mail;
 			this.nummer = nummer;
 			this.name = name;
-			this.sv_nummer = sv;
+			this._id = sv;
 			this.firma = firma;
 		}
 
@@ -47,10 +47,10 @@ public class Mitarbeiter {
 		}
 
 		public int getSv_nummer() {
-			return sv_nummer;
+			return _id;
 		}
 		public void setSv_nummer(int sv_nummer) {
-			this.sv_nummer = sv_nummer;
+			this._id = sv_nummer;
 		}
 
         public Firma getFirma() {

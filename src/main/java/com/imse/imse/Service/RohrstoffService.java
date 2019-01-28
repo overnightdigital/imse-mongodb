@@ -26,12 +26,12 @@ public class RohrstoffService {
         return rohrstoffRepository.findAll();
     }
 
-    public Optional<Rohrstoff> getByIdRohrstoff(int id) {
-        return rohrstoffRepository.findById(id);
+    public Rohrstoff getByIdRohrstoff(int id) {
+        return rohrstoffRepository.findBy_id(id);
     }
 
     public void updateRohrstoff(float m, float p, int ID, String name) {
-        Rohrstoff r = rohrstoffRepository.findById(ID).get();
+        Rohrstoff r = rohrstoffRepository.findBy_id(ID);
         r.setName(name);
         r.setPreis(p);
         r.setMenge(m);
@@ -39,6 +39,6 @@ public class RohrstoffService {
     }
 
     public void deleteRohrstoff(int id) {
-        rohrstoffRepository.deleteById(id);
+        rohrstoffRepository.deleteBy_id(id);
     }
 }

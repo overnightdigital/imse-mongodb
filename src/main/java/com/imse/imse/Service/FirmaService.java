@@ -26,18 +26,18 @@ public class FirmaService {
         return firmaRepository.findAll();
     }
 
-    public Optional<Firma> getByIdFirma(int id) {
-        return firmaRepository.findById(id);
+    public Firma getByIdFirma(int id) {
+        return firmaRepository.findBy_id(id);
     }
 
     public void updateFirma(int id, String name, String adresse) {
-        Firma f = firmaRepository.findById(id).get();
+        Firma f = firmaRepository.findBy_id(id);
         f.setName(name);
         f.setAdresse(adresse);
         firmaRepository.save(f);
     }
 
     public void deleteFirma(int id) {
-        firmaRepository.deleteById(id);
+        firmaRepository.deleteBy_id(id);
     }
 }

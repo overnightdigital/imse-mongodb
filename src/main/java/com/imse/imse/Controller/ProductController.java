@@ -24,7 +24,7 @@ public class ProductController {
     @RequestMapping(value = "/produkt", params = { "id","name","preis" }, method = POST)
     public void createProdukt(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("preis") String preis, @RequestParam("firma_id") int firma_id){
         System.out.println(" !!!!  id: " + id + " name: " + name + " preis: " + preis);
-        produktService.createProdukt(id, name, preis, firmaService.getByIdFirma(firma_id).get());
+        produktService.createProdukt(id, name, preis, firmaService.getByIdFirma(firma_id));
     }
 
     @RequestMapping(value = "/produkt", method = GET)
@@ -40,7 +40,7 @@ public class ProductController {
 
     @RequestMapping(value = "/produkt/{id}", method = GET)
     public Produkt getByIdProdukt(@PathVariable int id){
-        return produktService.getByIdProdukt(id).get();
+        return produktService.getByIdProdukt(id);
     }
 
     @RequestMapping(value = "/produkt", params = { "id","name","preis" }, method = PUT)

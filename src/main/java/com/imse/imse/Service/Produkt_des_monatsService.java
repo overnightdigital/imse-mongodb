@@ -25,18 +25,18 @@ public class Produkt_des_monatsService {
         return produkt_des_monatsRepository.findAll();
     }
 
-    public Optional<Produkt_des_monats> getByIdProdukt_des_monats(int id) {
-        return produkt_des_monatsRepository.findById(id);
+    public Produkt_des_monats getByIdProdukt_des_monats(int id) {
+        return produkt_des_monatsRepository.findBy_id(id);
     }
 
     public void updateProdukt_des_monats(int Produkt_ID, String s, int b) {
-        Produkt_des_monats pm = produkt_des_monatsRepository.findById(Produkt_ID).get();
+        Produkt_des_monats pm = produkt_des_monatsRepository.findBy_id(Produkt_ID);
         pm.setBewertung(b);
         pm.setSpezifikation(s);
         produkt_des_monatsRepository.save(pm);
     }
 
     public void deleteProdukt_des_monats(int id) {
-        produkt_des_monatsRepository.deleteById(id);
+        produkt_des_monatsRepository.deleteBy_id(id);
     }
 }

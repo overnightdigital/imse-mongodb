@@ -36,7 +36,7 @@ public class FirmaController {
 
     @RequestMapping(value = "/firma/{id}", method = GET, produces = "application/json")
     public Firma getByIdFirma(@PathVariable int id){
-        return firmaService.getByIdFirma(id).get();
+        return firmaService.getByIdFirma(id);
     }
 
     @RequestMapping(value = "/firma", params = { "id","name","adresse" }, method = PUT)

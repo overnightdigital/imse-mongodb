@@ -24,7 +24,7 @@ public class RohrstoffController {
     @RequestMapping(value = "/rohstoff", params = { "m","p","id", "name" }, method = POST)
     public void createProdukt(@RequestParam("m") float m, @RequestParam("p") float p, @RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("firma_id") int firma_id){
         System.out.println(" !!!!  m: " + m + " p: " + p + " id: " + id + " name: " + name);
-        rohrstoffService.createRohrstoff(m, p, id, name, firmaService.getByIdFirma(firma_id).get());
+        rohrstoffService.createRohrstoff(m, p, id, name, firmaService.getByIdFirma(firma_id));
     }
 
     @RequestMapping(value = "/rohstoff", method = GET)
@@ -40,7 +40,7 @@ public class RohrstoffController {
 
     @RequestMapping(value = "/rohstoff/{id}", method = GET)
     public Rohrstoff getByIdProdukt(@PathVariable int id){
-        return rohrstoffService.getByIdRohrstoff(id).get();
+        return rohrstoffService.getByIdRohrstoff(id);
     }
 
     @RequestMapping(value = "/rohstoff", params = { "m","p","id", "name" }, method = PUT)

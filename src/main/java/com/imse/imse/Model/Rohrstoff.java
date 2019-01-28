@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 public class Rohrstoff {
 
     @Id
-    private int ID;
+    private int _id;
 
 	private float menge;
 
@@ -18,7 +18,7 @@ public class Rohrstoff {
 	public Rohrstoff() {}
 
 	public Rohrstoff(float m, float p, int ID, String name, Firma firma) {
-		this.ID = ID;
+		this._id = ID;
 		this.name = name;
 		this.menge = m;
 		this.firma = firma;
@@ -46,10 +46,10 @@ public class Rohrstoff {
 	}
 
 	public int getID_Nummer() {
-		return ID;
+		return _id;
 	}
 	public void setID_Nummer(int iD_Nummer) {
-		ID = iD_Nummer;
+		_id = iD_Nummer;
 	}
 
     public Firma getFirma() {

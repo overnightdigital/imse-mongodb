@@ -25,7 +25,7 @@ public class MitarbeiterController {
     @RequestMapping(value = "/mitarbeiter", params = { "name","nummer","e_mail", "sv", "firma_id" }, method = POST)
     public void createMitarbeiter(@RequestParam("name") String name, @RequestParam("nummer") String nummer, @RequestParam("e_mail") String e_mail, @RequestParam("sv") int sv, @RequestParam("firma_id") int firma_id){
         System.out.println(" !!!!  name: " + name + " nummer: " + nummer + " e_mail: " + e_mail + " sv: " + sv);
-        mitarbeiterService.createMitarbeiter(name, nummer, e_mail, sv, firmaService.getByIdFirma(firma_id).get());
+        mitarbeiterService.createMitarbeiter(name, nummer, e_mail, sv, firmaService.getByIdFirma(firma_id));
     }
 
     @RequestMapping(value = "/mitarbeiter", method = GET)
@@ -41,7 +41,7 @@ public class MitarbeiterController {
 
     @RequestMapping(value = "/mitarbeiter/{id}", method = GET)
     public Mitarbeiter getByIdMitarbeiter(@PathVariable int id){
-        return mitarbeiterService.getByIdMitarbeiter(id).get();
+        return mitarbeiterService.getByIdMitarbeiter(id);
     }
 
     @RequestMapping(value = "/mitarbeiter", params = { "name","nummer","e_mail", "sv" }, method = PUT)

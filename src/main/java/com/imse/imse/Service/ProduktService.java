@@ -26,18 +26,18 @@ public class ProduktService {
         return produktRepository.findAll();
     }
 
-    public Optional<Produkt> getByIdProdukt(int id) {
-        return produktRepository.findById(id);
+    public Produkt getByIdProdukt(int id) {
+        return produktRepository.findBy_id(id);
     }
 
     public void updateProdukt(int id, String name, String preis) {
-        Produkt p = produktRepository.findById(id).get();
+        Produkt p = produktRepository.findBy_id(id);
         p.setName(name);
         p.setPreis(preis);
         produktRepository.save(p);
     }
 
     public void deleteProdukt(int id) {
-        produktRepository.deleteById(id);
+        produktRepository.deleteBy_id(id);
     }
 }

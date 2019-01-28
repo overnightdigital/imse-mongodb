@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 public class Produkt_des_monats {
 
     @Id
-    private int Produkt_ID;
+    private int _id;
 
 	private String Spezifikation;
 
@@ -14,7 +14,7 @@ public class Produkt_des_monats {
 	public Produkt_des_monats() {}
 
 	public Produkt_des_monats(int Produkt_ID, String s, int b) {
-	    this.Produkt_ID = Produkt_ID;
+	    this._id = Produkt_ID;
 		this.Spezifikation = s;
 		this.Bewertung = b;
 	}
@@ -34,9 +34,9 @@ public class Produkt_des_monats {
 	}
 
     public int getProdukt_ID() {
-        return Produkt_ID;
+        return _id;
     }
     public void setProdukt_ID(int produkt_ID) {
-        Produkt_ID = produkt_ID;
+        _id = produkt_ID;
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 public class Firma {
 
     @Id
-	private int ID;
+	private int _id;
 
 	private String name;
 
@@ -14,16 +14,16 @@ public class Firma {
 	public Firma(){}
 
 	public Firma(int id, String name, String adresse){
-		this.ID = id;
+		this._id = id;
 		this.adresse = adresse;
 		this.name = name;
 	}
 
 	public int getID() {
-		return ID;
+		return _id;
 	}
 	public void setID(int iD) {
-		ID = iD;
+		_id = iD;
 	}
 
 	public String getName() {
@@ -43,7 +43,7 @@ public class Firma {
     @Override
     public String toString() {
         return "Firma{" +
-                "ID=" + ID +
+                "ID=" + _id +
                 ", name='" + name + '\'' +
                 ", adresse='" + adresse + '\'' +
                 '}';

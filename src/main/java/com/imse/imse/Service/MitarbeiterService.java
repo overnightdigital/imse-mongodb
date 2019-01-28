@@ -26,12 +26,12 @@ public class MitarbeiterService {
         return mitarbeiterRepository.findAll();
     }
 
-    public Optional<Mitarbeiter> getByIdMitarbeiter(int id) {
-        return mitarbeiterRepository.findById(id);
+    public Mitarbeiter getByIdMitarbeiter(int id) {
+        return mitarbeiterRepository.findBy_id(id);
     }
 
     public void updateMitarbeiter(String name, String nummer, String e_mail, int sv) {
-        Mitarbeiter m = mitarbeiterRepository.findById(sv).get();
+        Mitarbeiter m = mitarbeiterRepository.findBy_id(sv);
         m.setName(name);
         m.setNummer(nummer);
         m.setE_mail(e_mail);
@@ -39,6 +39,6 @@ public class MitarbeiterService {
     }
 
     public void deleteMitarbeiter(int id) {
-        mitarbeiterRepository.deleteById(id);
+        mitarbeiterRepository.deleteBy_id(id);
     }
 }

@@ -41,7 +41,7 @@ public class Produkt_des_monatsController {
 
     @RequestMapping(value = "/produkt_des_monats/{id}", method = GET)
     public Produkt_des_monats getByIdProdukt_des_monats(@PathVariable int id){
-        return produkt_des_monatsService.getByIdProdukt_des_monats(id).get();
+        return produkt_des_monatsService.getByIdProdukt_des_monats(id);
     }
 
     @RequestMapping(value = "/produkt_des_monats", params = { "produkt_id","s","b" }, method = PUT)
@@ -69,6 +69,6 @@ public class Produkt_des_monatsController {
 
     @RequestMapping(value = "/produkt_des_monats/produkt/{id}", method = GET)
     public Produkt getProductfromProdukt_des_monats(@PathVariable int id) {
-        return produktService.getByIdProdukt(id).get();
+        return produktService.getByIdProdukt(id);
     }
 }
